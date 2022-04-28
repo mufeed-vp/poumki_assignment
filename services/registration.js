@@ -49,8 +49,9 @@ router.get('/userDetails', async (req,res) => {
           _id: 1,
           firstName: 1,
           lastName: 1,
-          joiningDate: { $dateToString: { format: "%Y/%m/%d", date: "$registeredate" } },
-          joiningTime: { $dateToString: { format: "%H:%M", date: "$registeredate" } },
+          email: 1,
+          joiningDate: { $dateToString: { format: "%Y/%m/%d", date: "$registeredDate" } },
+          joiningTime: { $dateToString: { format: "%H:%M", date: "$registeredDate" } },
         }
       }
     ])
@@ -62,12 +63,12 @@ router.get('/userDetails', async (req,res) => {
   }
 })
 
-router.delete('/', async (req,res) => {
+router.delete('/delete-user-details', async (req,res) => {
   try {
 
-    const userId = req.body
+    const { userId } = req.query;
 
-    await User.remove({_id: ObjectID(userId)})
+    await User.findOneAndDelete({_id: ObjectID(userId)})
 
     return res.status(200).json({message: 'Deleted'})
 
