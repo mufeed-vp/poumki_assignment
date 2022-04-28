@@ -11,5 +11,5 @@ const userSchema = new Schema({
     registeredDate: { type: Schema.Types.Date, required: true },
 },{ versionKey: false })
 
-productSchema.plugin(AutoIncrement,{ inc_field: 'userCount' });
+userSchema.plugin(AutoIncrement,{ inc_field: 'userCount' });
 module.exports = mongoose.model('user', userSchema)
