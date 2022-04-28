@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const env = require('./env')
 
-const registration = require('./services/registration')
+const registrationForm = require('./services/registrationForm')
 
 const app = express();
 
@@ -65,6 +65,6 @@ try {
 }
 
 
-app.use('/', registration)
+app.use('/', registrationForm)
 
 module.exports = app
