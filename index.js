@@ -18,7 +18,7 @@ app.use(express.static('public'));
 
 var cors = require('cors');
 
-var originWhitelist = ['http://localhost:3000']; //react dashboard URL
+var originWhitelist = ['http://localhost:3000','http://localhost:3001']; //react dashboard URL
 
 var corsOptions = {
   origin: function(origin, callback){
